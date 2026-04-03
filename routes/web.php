@@ -1,35 +1,49 @@
 <?php
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ViduController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\AccountController;
 
-Route::get('/baongoc', function () {
-    return 'Trần Bảo Ngọc';
+
+//Truy cập vào trang chủ
+Route::get('/', function(){
+    return redirect('/home');
 });
+Route::get('/home', [BookController::class, 'index'])->name('index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/thuthao', [App\Http\Controllers\ControllerThao::class, 'thuThao']);
-Route::get('/doanhthu', [App\Http\Controllers\ControllerThao::class, 'doanhThu']);
+//Truy cập vào thông tin chi tiết sách
+Route::get('/book/{id}', [BookController::class, 'show'])->name('book.show');
 
-Route::get('/minhnguyet', [App\Http\Controllers\ControllerNguyet::class, 'minhNguyet']);
-Route::get('/theloai', [App\Http\Controllers\ControllerKhoa::class, 'theLoai']);
 
-Route::get('/theLoai', [App\Http\Controllers\ControllerHuy::class, 'theLoaiPhim']);
-
-Route::get('/movies-long', [App\Http\Controllers\MovieController::class, 'getLongMovies']);
-Route::get('/top-10-phim', [App\Http\Controllers\Top10Controller::class, 'top10bophim']);
-Route::get('/movieCanada', [App\Http\Controllers\ControllerNguyet::class, 'movieCanada']);
-
-Route::get('/home', [ViduController::class, 'moveToHomePage']);
-Route::get('/bookdetail', [ViduController::class, 'moveToBookDetail']);
-
+// Truy cập vào profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+// Truy cập vào màn hình sau khi login/sign in thành công
+Route::get('/dashboard', function(){return view('dashboard');})
+->middleware('auth')
+->name('dashboard');
+
+
+// Truy cập vào giao diện quản lý
+
+
+// edit view
+Route::get('/account/edit',[AccountController::class, 'edit'])
+->middleware('auth')
+->name("account.edit");
+
+
+// Truy cập để lưu thông tin tài khoản
+Route::post('/account/update', [AccountController::class, 'update'])
+->middleware('auth')
+->name('account.update');
+
+Route::get('/testSendEmail', [AccountController::class, 'sendEmail']);
 require __DIR__.'/auth.php';
+
