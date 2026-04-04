@@ -5,10 +5,6 @@
     <title>{{$title ?? "Chưa có tiêu đề"}}</title>
     <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-    <!-- Font Awesome (để hiện icon giỏ hàng) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
     <style>
         .book-cover-container {
             width: 100%;
@@ -24,21 +20,7 @@
             height: 100%;
             object-fit: cover;
         }
-
-        .book {
-            position: relative;
-            margin: 10px;
-            text-align: center;
-            padding-bottom: 35px;
-        }
-
-        .btn-add-product {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
     </style>
-
 </head>
 
 <body>
@@ -54,6 +36,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white font-weight-bold mr-3"  href="{{url('/home?book_id=2')}}">Truyện ngắn-tản văn</a>
+<<<<<<< HEAD
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white font-weight-bold mr-3"  href="{{url('/home?book_id=3')}}">Tác phẩm kinh điển</a>
@@ -88,11 +71,14 @@
         {{$slot}}
     </main>
                     <a class="nav-link text-white font-weight-bold mr-3" href="{{url('/home?book_id=2')}}">Truyện ngắn-tản văn</a>
+=======
+>>>>>>> parent of e0d709e ([MERGE COMMIT] Làm trang giỏ hàng và trang đặt hàng)
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white font-weight-bold mr-3" href="{{url('/home?book_id=3')}}">Tác phẩm kinh điển</a>
+                    <a class="nav-link text-white font-weight-bold mr-3"  href="{{url('/home?book_id=3')}}">Tác phẩm kinh điển</a>
                 </li>
             </ul>
+<<<<<<< HEAD
 
             
             <div class="d-flex align-items-center">
@@ -138,16 +124,36 @@
                 </a>
                 @endauth
 
+=======
+            <!-- Xử lý hiển thị đăng nhập/đăng ký -->
+            @auth
+            <div class="dropdown">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                    {{ Auth::user()->name }}
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{{ route('account.edit') }}">Quản lý</a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a class="dropdown-item" onclick="event.preventDefault();
+                                this.closest('form').submit();">Đăng xuất</a>
+                    </form>
+                </div>
+>>>>>>> parent of e0d709e ([MERGE COMMIT] Làm trang giỏ hàng và trang đặt hàng)
             </div>
+            @else
+            <a href="{{ route('login') }}">
+                <button class='btn btn-sm btn-primary'>Đăng nhập</button>
+            </a>&nbsp;
+            <a href="{{ route('register') }}">
+                <button class='btn btn-sm btn-success'>Đăng ký</button>
+            </a>
+            @endauth
         </nav>
     </header>
-
     <main>
         {{$slot}}
     </main>
-
-    {{-- Footer chỉ hiển thị khi $hideFooter không tồn tại hoặc false --}}
-    @unless($hideFooter ?? false)
     <footer>
         <div class='row' style='text-align:center'>
             <div class='col-4'>TRỤ SỞ</div>
@@ -166,3 +172,4 @@
 
 
 </html>
+

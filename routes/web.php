@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AccountController;
 
+<<<<<<< HEAD
 
 //Truy cập vào trang chủ
 Route::get('/', function(){
@@ -74,6 +75,8 @@ Route::post('/order/create','App\Http\Controllers\BookController@ordercreate')
 require __DIR__.'/auth.php';
 
 
+=======
+>>>>>>> parent of e0d709e ([MERGE COMMIT] Làm trang giỏ hàng và trang đặt hàng)
 //Truy cập vào trang chủ
 Route::get('/', function () {
     return redirect('/home');

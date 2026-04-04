@@ -20,7 +20,6 @@
             <img src='{{asset("Image/$row->file_anh_bia")}}' class = 'book-cover-container'>
 >>>>>>> parent of c9a20b9 (Huynh An update yeu cau 4):resources/views/book_example/book-detail.blade.php
         </div>
-
         <div>
             <div>Nhà cung cấp: <b>{{$row->nha_cung_cap}}</b></div>
             <div>Nhà xuất bản: <b>{{$row->nha_xuat_ban}}</b></div>
@@ -45,13 +44,9 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="px-3 pt-3"><b>Mô tả:</b></div>
-<p class="px-3">{{$row->mo_ta}}</p>
-@endforeach
-
-
+    <div  class="px-3 pt-3"><b>Mô tả:</b></div>
+    <p  class="px-3">{{$row->mo_ta}}</p>
+    @endforeach
 </x-new-book-layout>
 =======
 </x-book-layout>
