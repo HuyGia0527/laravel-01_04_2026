@@ -21,3 +21,4 @@
     <p  class="px-3">{{$row->mo_ta}}</p>
     @endforeach
 </x-new-book-layout>
+

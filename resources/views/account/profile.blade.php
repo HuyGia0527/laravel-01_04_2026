@@ -15,6 +15,7 @@
                         CẬP NHẬT THÔNG TIN CÁ NHÂN
                     </div>
 
+
                     <div class="form-group">
                         <label>Tên</label>
                         <input type='text' class='form-control' name='name' value="{{$user->name}}">
@@ -30,7 +31,9 @@
                         <input type='text' class='form-control' name='phone' value="{{$user->phone}}">
                     </div>
 
+
                     <input type='hidden' value='{{$user->id}}' name='id'>
+
 
                     <div class="form-group">
                         <label>Ảnh đại diện</label>
@@ -47,3 +50,4 @@
         </div>
     </div>
 </x-account-layout>
+

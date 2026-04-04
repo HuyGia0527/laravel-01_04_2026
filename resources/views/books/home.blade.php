@@ -22,3 +22,4 @@
         </div>
     </div>
 </x-new-book-layout>
+
