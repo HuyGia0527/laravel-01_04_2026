@@ -62,10 +62,10 @@
                 </li>
             </ul>
 
-            <!-- RIGHT SIDE -->
+            
             <div class="d-flex align-items-center">
 
-                <!-- 🛒 GIỎ HÀNG -->
+                
                 <div style='color:white;position:relative' class='mr-3'>
                     <div style='width:20px; height:20px;background-color:#23b85c; font-size:12px; border:none;
                           border-radius:50%; position:absolute;right:2px;top:-2px; text-align:center; line-height:20px'
@@ -82,7 +82,7 @@
                     </a>
                 </div>
 
-                <!-- LOGIN / USER -->
+                
                 @auth
                 <div class="dropdown">
                     <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
