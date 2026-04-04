@@ -5,6 +5,61 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AccountController;
 
+
+//Truy cập vào trang chủ
+Route::get('/', function(){
+    return redirect('/home');
+});
+Route::get('/home', [BookController::class, 'index'])->name('index');
+
+
+//Truy cập vào thông tin chi tiết sách
+Route::get('/book/{id}', [BookController::class, 'show'])->name('book.show');
+
+
+// Truy cập vào profile
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+
+// Truy cập vào màn hình sau khi login/sign in thành công
+Route::get('/dashboard', function(){return view('dashboard');})
+->middleware('auth')
+->name('dashboard');
+
+
+// Truy cập vào giao diện quản lý
+
+
+// edit view
+Route::get('/account/edit',[AccountController::class, 'edit'])
+->middleware('auth')
+->name("account.edit");
+
+
+// Truy cập để lưu thông tin tài khoản
+Route::post('/account/update', [AccountController::class, 'update'])
+->middleware('auth')
+->name('account.update');
+
+// Truy cập để vào giỏ hàng
+Route::get('/order','App\Http\Controllers\BookController@order')->name('order');
+
+// Tạo đường dẫn cho trang xử lý thêm vào giỏ hàng
+Route::post('/cart/add','App\Http\Controllers\BookController@cartadd')->name('cartadd');
+
+//
+Route::post('/cart/delete','App\Http\Controllers\BookController@cartdelete')->name('cartdelete');
+Route::post('/order/create','App\Http\Controllers\BookController@ordercreate') 
+			->middleware('auth')->name('ordercreate');
+
+
+require __DIR__.'/auth.php';
+
+
 //Truy cập vào trang chủ
 Route::get('/', function () {
     return redirect('/home');
