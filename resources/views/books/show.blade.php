@@ -17,6 +17,12 @@
             <div>Nhà xuất bản: <b>{{$row->nha_xuat_ban}}</b></div>
             <div>Tác giả: <b>{{$row->tac_gia}}</b></div>
             <div>Hình thức bìa: <b>{{$row->hinh_thuc_bia}}</b></div>
+        </div>
+        </div>
+    </div>
+    <div  class="px-3 pt-3"><b>Mô tả:</b></div>
+    <p  class="px-3">{{$row->mo_ta}}</p>
+    @endforeach
 
             <!-- 🛒 THÊM VÀO GIỎ -->
             <div class='mt-3'>

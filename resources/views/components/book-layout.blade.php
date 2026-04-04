@@ -32,18 +32,18 @@
             <div class="row">
                 <div class="col-3">
                     <div style="background-color: red" class="w-100 p-3 font-weight-bold text-white mt-3">
-                        <ul>
-                            <li>
-                                <a href='{{url("/home")}}' class='text-white'>Trang Chủ</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link menu-the-loai" href="#" the_loai="">Trang Chủ</a>
                             </li>
-                            <li>
-                                <a href='{{url("/home?book_id=1")}}' class='text-white'>Tiểu Thuyết</a>
+                            <li class="nav-item">
+                                <a class="nav-link menu-the-loai" href="#" the_loai="1">Tiểu Thuyết</a>
                             </li>
-                            <li>
-                                <a href='{{url("/home?book_id=2")}}' class='text-white'>Truyện ngắn-Tản văn</a>
+                            <li class="nav-item">
+                                <a class="nav-link menu-the-loai" href="#" the_loai="2">Truyện ngắn-Tản văn</a>
                             </li>
-                            <li>
-                                <a href='{{url("/home?book_id=3")}}' class='text-white'>Tác phẩm kinh điển</a>
+                            <li class="nav-item">
+                                <a class="nav-link menu-the-loai" href="#" the_loai="3">Tác phẩm kinh điển</a>
                             </li>
                         </ul>
                     </div>
@@ -63,6 +63,6 @@
             <div class='col-4'>BẢN ĐỒ</div>
         </div>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
-
 </html>
