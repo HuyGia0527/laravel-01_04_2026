@@ -1,0 +1,2 @@
+// Đây là code của form-example
+ <form action="{{route('booksave',['action'=>$action])}}" method = "post" enctype="multipart/form-data">

@@ -21,12 +21,10 @@
                         <input type='text' class='form-control' name='name' value="{{$user->name}}">
                     </div>
 
-
                     <div class="form-group">
                         <label>Email</label>
                         <input type='text' class='form-control' name='email' value="{{$user->email}}">
                     </div>
-
 
                     <div class="form-group">
                         <label>Số điện thoại</label>
@@ -43,7 +41,6 @@
                         <img src="{{ asset('storage/profile/'.$user->photo) }}" width="50px" class='mb-1' />
                     </div>
 
-
                     @csrf
                     <div class='text-center mt-4'>
                         <input type='submit' class='btn btn-primary px-5' value='Lưu'>
@@ -53,3 +50,4 @@
         </div>
     </div>
 </x-account-layout>
+

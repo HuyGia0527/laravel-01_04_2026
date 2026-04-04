@@ -1,58 +1,99 @@
 <!DOCTYPE html>
-<title>{{$title ?? "Chưa có tiêu đề"}}</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<style>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang quản trị tài khoản</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    
+  <script src="https://code.jquery.com/jquery-3.7.1.js" ></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+  <script src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap4.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap4.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   
+  <!-- Scripts -->
+
+  <style>
     .sidebar {
-        background-color: #343a40;
-        min-height: 100vh;
-        color: white;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      padding: 48px 0 0; /* Height of navbar */
+      box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+      background-color:#404e68!important
+      
     }
-
-
-    .nav-link {
-        color: #ccc;
+    .sidebar a
+    {
+        color:white!important;
     }
+    .navbar {
+        
+        font-weight:bold;
+        margin:0 auto;
+        margin-bottom: 20px;
+     
 
-
-    .nav-link:hover {
-        color: white;
     }
-</style>
+    .navbar-nav
+    {
+        margin:0 auto;
+        width:1000px;
+        
+    }
+    .navbar-nav a
+    {
+        color:black!important;
+    }
+    .content {
+      margin-left: 240px; /* Width of sidebar */
+    }
+  </style>
 </head>
-
-
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2 p-0 sidebar">
-                <ul class="nav flex-column mt-3">
-                    <li class="nav-item p-3">
-                        <a class="nav-link font-weight-bold" href="{{ route('account.update')}} ">
-                            Thông tin tài khoản
-                        </a>
-                    </li>
-                    <li class="nav-item p-3">
-                        <a class="nav-link" href="{{url('home')}}">Quản lý sách</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-10 p-0">
-                <div class="bg-light p-3 border-bottom">
-                    <b class="ml-3">Trang chủ</b>
-                </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{route('index')}}">Trang chủ</a>
+            </li>
+        </ul>
+  </nav>
 
-
-                <div class="main-content p-4">
-                    {{ $slot }}
-                </div>
-            </div>
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block  sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="{{route('account.edit')}}">
+                Thông tin tài khoản
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('book.index')}}">
+                Quản lý sách
+              </a>
+            </li>
+          </ul>
         </div>
+      </nav>
+
+      <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4 content ">
+        <!-- Nội dung trang quản trị -->
+            {{$slot}}
+      </main>
     </div>
+  </div>
 
 
-
-
+ 
 </body>
-
-
 </html>
