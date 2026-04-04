@@ -3,6 +3,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\EmailNotification;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -41,6 +43,9 @@ class AccountController extends Controller
         }
         DB::table("users")->where("id", $id)->update($data);
         return redirect()->route('account.edit')->with('status', 'Cập nhật thành công');
+    }
+    public function sendEmail(){
+       Notification::route('mail', "khoa06025@gmail.com")->notify(new EmailNotification());
     }
 }
 
