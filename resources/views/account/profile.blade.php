@@ -14,8 +14,6 @@
                     <div class="text-center font-weight-bold text-primary mb-4">
                         CẬP NHẬT THÔNG TIN CÁ NHÂN
                     </div>
-
-
                     <div class="form-group">
                         <label>Tên</label>
                         <input type='text' class='form-control' name='name' value="{{$user->name}}">
@@ -50,4 +48,3 @@
         </div>
     </div>
 </x-account-layout>
-
