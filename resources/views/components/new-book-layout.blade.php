@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-
 <head>
     <title>{{$title ?? "Chưa có tiêu đề"}}</title>
     <link rel="stylesheet"
@@ -16,7 +15,6 @@
             background: white;
         }
 
-
         .book-cover-container img {
             width: 100%;
             height: 100%;
@@ -24,7 +22,6 @@
         }
     </style>
 </head>
-
 
 <body>
     <header style='text-align:center'>

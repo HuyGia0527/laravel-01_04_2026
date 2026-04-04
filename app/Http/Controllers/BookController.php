@@ -2,7 +2,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\sach;
 
 class BookController extends Controller{
     public function index(Request $request){
