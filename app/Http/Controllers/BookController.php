@@ -1,8 +1,12 @@
 <?php   
 namespace App\Http\Controllers;
+
+use App\Models\User;
+use App\Notifications\EmailNotification;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class BookController extends Controller{
     public function index(Request $request){
@@ -187,7 +191,7 @@ public function cartadd(Request $request)
         if(count($cart) > 0)
         {
             $order = [
-                "ngay_dat_hang" => DB::raw("now()"),
+                "ngay_dat_hang" => now()->format('d/m/Y H:i:s'),
                 "tinh_trang" => 1,
                 "hinh_thuc_thanh_toan" => $request->hinh_thuc_thanh_toan,
                 "user_id" => Auth::user()->id
@@ -195,26 +199,25 @@ public function cartadd(Request $request)
 
             DB::transaction(function () use ($order, $cart) {
 
-                $id_don_hang = DB::table("don_hang")->insertGetId($order);
+                //$id_don_hang = DB::table("don_hang")->insertGetId($order);
 
-                // lấy danh sách sách
-                $books = DB::table("sach")
-                            ->whereIn("id", array_keys($cart))
-                            ->get();
+                // gửi email cho khách hàng.
+                $user = User::find(Auth::user()->id);
+                $user->notify(new EmailNotification($order));
 
                 $detail = [];
 
-                foreach($books as $row)
-                {
-                    $detail[] = [
-                        "ma_don_hang" => $id_don_hang,
-                        "sach_id" => $row->id,
-                        "so_luong" => $cart[$row->id],
-                        "don_gia" => $row->gia_ban
-                    ];
-                }
+                // foreach($books as $row)
+                // {
+                //      $detail[] = [
+                //          "ma_don_hang" => $id_don_hang,
+                //          "sach_id" => $row->id,
+                //          "so_luong" => $cart[$row->id],
+                //          "don_gia" => $row->gia_ban
+                //      ];
+                // }
 
-                DB::table("chi_tiet_don_hang")->insert($detail);
+                // DB::table("chi_tiet_don_hang")->insert($detail);
 
                 session()->forget('cart');
             });

@@ -10,13 +10,15 @@ use Illuminate\Notifications\Notification;
 class EmailNotification extends Notification
 {
     use Queueable;
+    public $order=[];
 
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct($order)
     {
         //
+        $this->order = $order;
     }
 
     /**
@@ -34,7 +36,7 @@ class EmailNotification extends Notification
      */
     public function toMail(object $notifiable)
     {
-        return (new MailMessage)->view('mail.email-notification');
+        return (new MailMessage)->view('mail.email-notification', ['order' => $this->order]);
     }
 
     /**
