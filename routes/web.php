@@ -11,13 +11,9 @@ Route::get('/order','App\Http\Controllers\BookController@order')->name('order');
 // Tạo đường dẫn cho trang xử lý thêm vào giỏ hàng
 Route::post('/cart/add','App\Http\Controllers\BookController@cartadd')->name('cartadd');
 
-//
 Route::post('/cart/delete','App\Http\Controllers\BookController@cartdelete')->name('cartdelete');
 Route::post('/order/create','App\Http\Controllers\BookController@ordercreate') 
 			->middleware('auth')->name('ordercreate');
-
-
-require __DIR__.'/auth.php';
 
 
 //Truy cập vào trang chủ

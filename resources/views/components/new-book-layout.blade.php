@@ -71,9 +71,9 @@
                           border-radius:50%; position:absolute;right:2px;top:-2px; text-align:center; line-height:20px'
                         id='cart-number-product'>
                         @if (session('cart'))
-                            {{ array_sum(session('cart')) }}
+                        {{ array_sum(session('cart')) }}
                         @else
-                            0
+                        0
                         @endif
                     </div>
 
@@ -128,49 +128,66 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
-    $(document).ready(function(){
+        $(document).ready(function() {
+            $(".add-product").click(function() {
+                let id = $(this).attr("book_id");
+                let num = 1;
 
-        // ADD TỪ HOME
-        $(".add-product").click(function(){
-            let id = $(this).attr("book_id");
-            let num = 1;
-
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                url: "{{route('cartadd')}}",
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    "id": id,
-                    "num": num
-                },
-                success: function(data){
-                    $("#cart-number-product").html(data);
-                }
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "{{route('cartadd')}}",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "id": id,
+                        "num": num
+                    },
+                    success: function(data) {
+                        $("#cart-number-product").html(data);
+                    }
+                });
             });
+            $(".add-to-cart").click(function() {
+                let id = $(this).data("id");
+                let num = $("#product-number").val();
+
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "{{route('cartadd')}}",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "id": id,
+                        "num": num
+                    },
+                    success: function(data) {
+                        $("#cart-number-product").html(data);
+                    }
+                });
+            });
+
         });
 
-        // ADD TỪ SHOW
-        $(".add-to-cart").click(function(){
-            let id = $(this).data("id");
-            let num = $("#product-number").val();
-
+        $(".menu-the-loai").click(function() {
+            the_loai = $(this).attr("the_loai");
             $.ajax({
                 type: "POST",
-                dataType: "json",
-                url: "{{route('cartadd')}}",
+                dataType: "html",
+                url: "{{route('index')}}",
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    "id": id,
-                    "num": num
+                    "the_loai": the_loai
                 },
-                success: function(data){
-                    $("#cart-number-product").html(data);
-                }
+                beforeSend: function() {},
+                success: function(data) {
+                    $("#book-view-div").html(data);
+                },
+                error: function(xhr, status, error) {
+
+                },
+                complete: function(xhr, status) {}
             });
         });
-
-    });
     </script>
 
 </body>

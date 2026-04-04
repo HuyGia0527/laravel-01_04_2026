@@ -17,8 +17,6 @@
             <div>Nhà xuất bản: <b>{{$row->nha_xuat_ban}}</b></div>
             <div>Tác giả: <b>{{$row->tac_gia}}</b></div>
             <div>Hình thức bìa: <b>{{$row->hinh_thuc_bia}}</b></div>
-
-            <!-- 🛒 THÊM VÀO GIỎ -->
             <div class='mt-3'>
                 Số lượng mua:
                 <input type='number' id='product-number' size='5' min="1" value="1">
