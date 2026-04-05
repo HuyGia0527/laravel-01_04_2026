@@ -15,9 +15,6 @@
 /node_modules
 /public/build
 /public/hot
-/public/Banner
-/public/Image
-/public/Sidebar
 /public/storage
 /storage/*.key
 /storage/pail
